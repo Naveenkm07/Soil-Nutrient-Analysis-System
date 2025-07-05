@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.shape.Rectangle?>
+
+<VBox alignment="CENTER" spacing="20.0" styleClass="register-container"
+      xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.soilanalysis.controllers.RegistrationController">
+    
+    <padding>
+        <Insets top="40" right="40" bottom="40" left="40"/>
+    </padding>
+
+    <Text styleClass="title-text" text="Create Account"/>
+    
+    <GridPane vgap="15" hgap="10">
+        <columnConstraints>
+            <ColumnConstraints minWidth="100" prefWidth="150"/>
+            <ColumnConstraints minWidth="200" prefWidth="300"/>
+        </columnConstraints>
+
+        <!-- Username -->
+        <Label text="Username:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <HBox spacing="5" alignment="CENTER_LEFT" GridPane.rowIndex="0" GridPane.columnIndex="1">
+            <TextField fx:id="usernameField" promptText="Enter username" HBox.hgrow="ALWAYS"/>
+            <ProgressIndicator fx:id="usernameCheckIndicator" visible="false" prefWidth="20" prefHeight="20"/>
+        </HBox>
+        <Text fx:id="usernameStatusText" styleClass="field-status-text" GridPane.rowIndex="0" GridPane.columnIndex="1" GridPane.halignment="RIGHT"/>
+
+        <!-- Email -->
+        <Label text="Email:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <TextField fx:id="emailField" promptText="Enter email address" 
+                  GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+        <Text fx:id="emailStatusText" styleClass="field-status-text" GridPane.rowIndex="1" GridPane.columnIndex="1" GridPane.halignment="RIGHT"/>
+
+        <!-- Full Name -->
+        <Label text="Full Name:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+        <TextField fx:id="fullNameField" promptText="Enter your full name" 
+                  GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+        <!-- Password -->
+        <Label text="Password:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+        <VBox spacing="5" GridPane.rowIndex="3" GridPane.columnIndex="1">
+            <PasswordField fx:id="passwordField" promptText="Enter password" VBox.vgrow="ALWAYS"/>
+            <HBox spacing="5" alignment="CENTER_LEFT">
+                <Rectangle fx:id="passwordStrengthBar1" width="50" height="5" styleClass="password-strength-bar"/>
+                <Rectangle fx:id="passwordStrengthBar2" width="50" height="5" styleClass="password-strength-bar"/>
+                <Rectangle fx:id="passwordStrengthBar3" width="50" height="5" styleClass="password-strength-bar"/>
+                <Rectangle fx:id="passwordStrengthBar4" width="50" height="5" styleClass="password-strength-bar"/>
+                <Text fx:id="passwordStrengthText" styleClass="password-strength-text"/>
+            </HBox>
+        </VBox>
+
+        <!-- Confirm Password -->
+        <Label text="Confirm Password:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+        <PasswordField fx:id="confirmPasswordField" promptText="Confirm password" 
+                      GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+        <Text fx:id="confirmPasswordStatusText" styleClass="field-status-text" 
+              GridPane.rowIndex="4" GridPane.columnIndex="1" GridPane.halignment="RIGHT"/>
+
+        <!-- Role -->
+        <Label text="Role:" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+        <ComboBox fx:id="roleComboBox" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+    </GridPane>
+
+    <!-- Password Requirements -->
+    <VBox styleClass="password-requirements">
+        <Text styleClass="requirements-title" text="Password Requirements:"/>
+        <Text styleClass="requirement" text="• At least 8 characters long"/>
+        <Text styleClass="requirement" text="• Contains uppercase and lowercase letters"/>
+        <Text styleClass="requirement" text="• Contains at least one number"/>
+        <Text styleClass="requirement" text="• Contains at least one special character"/>
+    </VBox>
+
+    <!-- Status Message -->
+    <Text fx:id="statusText" styleClass="status-text"/>
+
+    <!-- Loading Overlay -->
+    <StackPane fx:id="loadingOverlay" styleClass="loading-overlay" visible="false">
+        <VBox alignment="CENTER" spacing="10">
+            <ProgressIndicator styleClass="loading-indicator"/>
+            <Text fx:id="loadingText" styleClass="loading-text" text="Creating account..."/>
+        </VBox>
+    </StackPane>
+
+    <!-- Buttons -->
+    <HBox spacing="10" alignment="CENTER">
+        <Button fx:id="registerButton" text="Register" 
+                styleClass="primary-button" onAction="#handleRegistration"/>
+        <Button fx:id="cancelButton" text="Cancel" 
+                styleClass="secondary-button" onAction="#handleCancel"/>
+    </HBox>
+</VBox> 

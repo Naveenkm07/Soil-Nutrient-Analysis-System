@@ -1,0 +1,41 @@
+# Maven
+target/
+*.class
+*.jar
+*.war
+*.ear
+
+# IDE
+.idea/
+*.iml
+.vscode/
+.settings/
+.project
+.classpath
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+logs/
+
+# Application properties (if contains sensitive data)
+# application-prod.properties
+# application-dev.properties
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+
+# Build directories
+build/
+out/
+
+# Test reports
+test-output/
+reports/ 

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.soilanalysis.controllers.SoilAnalysisController"
+      spacing="20" styleClass="analysis-container">
+    
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <!-- Header -->
+    <VBox spacing="10">
+        <Text styleClass="section-title" text="Soil Nutrient Analysis"/>
+        <Text styleClass="section-subtitle" text="Enter soil sample details and nutrient levels"/>
+    </VBox>
+
+    <!-- Input Form -->
+    <GridPane hgap="20" vgap="15">
+        <columnConstraints>
+            <ColumnConstraints hgrow="ALWAYS" minWidth="200"/>
+            <ColumnConstraints hgrow="ALWAYS" minWidth="200"/>
+        </columnConstraints>
+
+        <!-- Region and Soil Type -->
+        <Label text="Region:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <TextField fx:id="regionField" GridPane.columnIndex="0" GridPane.rowIndex="1"
+                  promptText="Enter region name"/>
+
+        <Label text="Soil Type:" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+        <ComboBox fx:id="soilTypeComboBox" GridPane.columnIndex="1" GridPane.rowIndex="1"
+                  prefWidth="Infinity"/>
+
+        <!-- Nutrient Levels -->
+        <Label text="Nitrogen (N) mg/kg:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+        <TextField fx:id="nitrogenField" GridPane.columnIndex="0" GridPane.rowIndex="3"
+                  promptText="Enter N value"/>
+
+        <Label text="Phosphorus (P) mg/kg:" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+        <TextField fx:id="phosphorusField" GridPane.columnIndex="1" GridPane.rowIndex="3"
+                  promptText="Enter P value"/>
+
+        <Label text="Potassium (K) mg/kg:" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+        <TextField fx:id="potassiumField" GridPane.columnIndex="0" GridPane.rowIndex="5"
+                  promptText="Enter K value"/>
+
+        <Label text="pH Level:" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+        <TextField fx:id="phField" GridPane.columnIndex="1" GridPane.rowIndex="5"
+                  promptText="Enter pH value"/>
+
+        <!-- Notes -->
+        <Label text="Additional Notes:" GridPane.columnIndex="0" GridPane.rowIndex="6"
+               GridPane.columnSpan="2"/>
+        <TextArea fx:id="notesArea" GridPane.columnIndex="0" GridPane.rowIndex="7"
+                  GridPane.columnSpan="2" prefRowCount="3"/>
+    </GridPane>
+
+    <!-- Action Buttons -->
+    <HBox spacing="10" alignment="CENTER">
+        <Button fx:id="analyzeButton" text="Analyze" styleClass="primary-button"/>
+        <Button fx:id="saveButton" text="Save Analysis" styleClass="secondary-button"/>
+        <Button fx:id="clearButton" text="Clear" styleClass="tertiary-button"/>
+    </HBox>
+
+    <!-- Results Section -->
+    <VBox fx:id="resultsContainer" spacing="10" styleClass="results-container">
+        <!-- Results will be populated dynamically -->
+    </VBox>
+
+    <!-- Status Message -->
+    <Text fx:id="statusText" styleClass="status-text"/>
+
+</VBox> 

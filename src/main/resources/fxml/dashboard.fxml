@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.soilanalysis.controllers.DashboardController"
+            styleClass="dashboard-container">
+    
+    <!-- Left Sidebar -->
+    <left>
+        <VBox fx:id="sidebar" styleClass="sidebar" prefWidth="250" spacing="20">
+            <padding>
+                <Insets top="20" right="10" bottom="20" left="10"/>
+            </padding>
+
+            <!-- User Info Section -->
+            <VBox styleClass="user-info-section" spacing="10">
+                <ImageView fitHeight="80" fitWidth="80" preserveRatio="true">
+                    <Image url="/images/user-avatar.png"/>
+                </ImageView>
+                <Label fx:id="welcomeLabel" styleClass="welcome-label"/>
+                <Label fx:id="userRoleLabel" styleClass="role-label"/>
+                <Separator/>
+            </VBox>
+
+            <!-- Navigation Buttons -->
+            <VBox spacing="10" styleClass="nav-buttons">
+                <Button fx:id="newAnalysisButton" text="New Analysis" 
+                        styleClass="nav-button" maxWidth="Infinity"
+                        graphic="📊"/>
+                
+                <Button fx:id="viewHistoryButton" text="View History" 
+                        styleClass="nav-button" maxWidth="Infinity"
+                        graphic="📚"/>
+                
+                <Button fx:id="profileButton" text="Profile" 
+                        styleClass="nav-button" maxWidth="Infinity"
+                        graphic="👤"/>
+                
+                <Button fx:id="settingsButton" text="Settings" 
+                        styleClass="nav-button" maxWidth="Infinity"
+                        graphic="⚙️"/>
+                
+                <Button fx:id="helpButton" text="Help &amp; Support" 
+                        styleClass="nav-button" maxWidth="Infinity"
+                        graphic="❓"/>
+            </VBox>
+
+            <!-- Logout Button -->
+            <Region VBox.vgrow="ALWAYS"/>
+            <Button fx:id="logoutButton" text="Logout" 
+                    styleClass="logout-button" maxWidth="Infinity"
+                    graphic="🚪"/>
+        </VBox>
+    </left>
+
+    <!-- Main Content Area -->
+    <center>
+        <StackPane fx:id="mainContainer" styleClass="main-content">
+            <!-- Content will be dynamically loaded here -->
+        </StackPane>
+    </center>
+
+    <!-- Status Bar -->
+    <bottom>
+        <HBox styleClass="status-bar" alignment="CENTER_LEFT" spacing="10">
+            <padding>
+                <Insets top="5" right="10" bottom="5" left="10"/>
+            </padding>
+            <Label text="Status: Ready" styleClass="status-label"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label text="Version 1.0.0" styleClass="version-label"/>
+        </HBox>
+    </bottom>
+</BorderPane> 

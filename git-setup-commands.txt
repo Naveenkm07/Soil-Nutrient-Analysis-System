@@ -1,0 +1,40 @@
+# Git Setup Commands for Soil Nutrient Analysis System
+# Run these commands after installing Git
+
+# 1. Initialize git repository
+git init
+
+# 2. Add all files to staging
+git add .
+
+# 3. Create initial commit
+git commit -m "Initial commit: Soil Nutrient Analysis System"
+
+# 4. Add your GitHub repository as remote (replace YOUR_USERNAME and REPO_NAME)
+git remote add origin https://github.com/YOUR_USERNAME/REPO_NAME.git
+
+# 5. Push to GitHub
+git branch -M main
+git push -u origin main
+
+# Optional: Create .gitignore file to exclude unnecessary files
+echo "# Maven
+target/
+*.class
+*.jar
+*.war
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Application properties (if contains sensitive data)
+# application-prod.properties" > .gitignore 

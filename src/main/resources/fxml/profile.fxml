@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.soilanalysis.controllers.ProfileController"
+      spacing="20" styleClass="profile-container">
+    
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <!-- Header -->
+    <VBox spacing="10">
+        <Text styleClass="section-title" text="User Profile"/>
+        <Text styleClass="section-subtitle" text="Manage your personal information and preferences"/>
+    </VBox>
+
+    <!-- Main Content -->
+    <TabPane VBox.vgrow="ALWAYS">
+        <!-- Personal Information Tab -->
+        <Tab text="Personal Information" closable="false">
+            <VBox spacing="20" styleClass="tab-content">
+                <GridPane hgap="20" vgap="15">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="ALWAYS" minWidth="200"/>
+                        <ColumnConstraints hgrow="ALWAYS" minWidth="200"/>
+                    </columnConstraints>
+
+                    <!-- Basic Information -->
+                    <Label text="Full Name:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                    <TextField fx:id="fullNameField" GridPane.columnIndex="0" GridPane.rowIndex="1"
+                             promptText="Enter your full name"/>
+
+                    <Label text="Email:" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                    <TextField fx:id="emailField" GridPane.columnIndex="1" GridPane.rowIndex="1"
+                             promptText="Enter your email address"/>
+
+                    <Label text="Phone:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                    <TextField fx:id="phoneField" GridPane.columnIndex="0" GridPane.rowIndex="3"
+                             promptText="Enter your phone number"/>
+
+                    <Label text="Address:" GridPane.columnIndex="0" GridPane.rowIndex="4"
+                           GridPane.columnSpan="2"/>
+                    <TextArea fx:id="addressArea" GridPane.columnIndex="0" GridPane.rowIndex="5"
+                             GridPane.columnSpan="2" promptText="Enter your address"/>
+
+                    <!-- Farm Information -->
+                    <Label text="Region:" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+                    <ComboBox fx:id="regionComboBox" GridPane.columnIndex="0" GridPane.rowIndex="7"
+                             prefWidth="Infinity"/>
+
+                    <Label text="Farm Size (acres):" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+                    <TextField fx:id="farmSizeField" GridPane.columnIndex="1" GridPane.rowIndex="7"
+                             promptText="Enter farm size"/>
+
+                    <Label text="Farm Type:" GridPane.columnIndex="0" GridPane.rowIndex="8"/>
+                    <ComboBox fx:id="farmTypeComboBox" GridPane.columnIndex="0" GridPane.rowIndex="9"
+                             prefWidth="Infinity"/>
+                </GridPane>
+
+                <HBox spacing="10" alignment="CENTER_RIGHT">
+                    <Button fx:id="saveProfileButton" text="Save Profile" styleClass="primary-button"/>
+                </HBox>
+            </VBox>
+        </Tab>
+
+        <!-- Preferences Tab -->
+        <Tab text="Preferences" closable="false">
+            <VBox spacing="20" styleClass="tab-content">
+                <GridPane hgap="20" vgap="15">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="ALWAYS" minWidth="200"/>
+                        <ColumnConstraints hgrow="ALWAYS" minWidth="200"/>
+                    </columnConstraints>
+
+                    <!-- Language and Theme -->
+                    <Label text="Language:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                    <ComboBox fx:id="languageComboBox" GridPane.columnIndex="0" GridPane.rowIndex="1"
+                             prefWidth="Infinity"/>
+
+                    <Label text="Theme:" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                    <ComboBox fx:id="themeComboBox" GridPane.columnIndex="1" GridPane.rowIndex="1"
+                             prefWidth="Infinity"/>
+
+                    <!-- Application Settings -->
+                    <Label text="Application Settings:" GridPane.columnIndex="0" GridPane.rowIndex="2"
+                           GridPane.columnSpan="2"/>
+                    
+                    <VBox spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="3"
+                          GridPane.columnSpan="2">
+                        <CheckBox fx:id="notificationsCheckBox" text="Enable Notifications"/>
+                        <CheckBox fx:id="autoSaveCheckBox" text="Auto-save Analysis Results"/>
+                        <CheckBox fx:id="darkModeCheckBox" text="Enable Dark Mode"/>
+                    </VBox>
+                </GridPane>
+
+                <HBox spacing="10" alignment="CENTER_RIGHT">
+                    <Button fx:id="resetPreferencesButton" text="Reset to Defaults" 
+                           styleClass="tertiary-button"/>
+                    <Button fx:id="savePreferencesButton" text="Save Preferences" 
+                           styleClass="primary-button"/>
+                </HBox>
+            </VBox>
+        </Tab>
+
+        <!-- Account Settings Tab -->
+        <Tab text="Account Settings" closable="false">
+            <VBox spacing="20" styleClass="tab-content">
+                <GridPane hgap="20" vgap="15">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="ALWAYS" minWidth="200"/>
+                        <ColumnConstraints hgrow="ALWAYS" minWidth="200"/>
+                    </columnConstraints>
+
+                    <!-- Change Password -->
+                    <Label text="Current Password:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                    <PasswordField fx:id="currentPasswordField" GridPane.columnIndex="0" GridPane.rowIndex="1"
+                                 promptText="Enter current password"/>
+
+                    <Label text="New Password:" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                    <PasswordField fx:id="newPasswordField" GridPane.columnIndex="1" GridPane.rowIndex="1"
+                                 promptText="Enter new password"/>
+
+                    <Label text="Confirm Password:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                    <PasswordField fx:id="confirmPasswordField" GridPane.columnIndex="0" GridPane.rowIndex="3"
+                                 promptText="Confirm new password"/>
+                </GridPane>
+
+                <HBox spacing="10" alignment="CENTER_RIGHT">
+                    <Button fx:id="changePasswordButton" text="Change Password" 
+                           styleClass="primary-button"/>
+                </HBox>
+            </VBox>
+        </Tab>
+    </TabPane>
+
+    <!-- Status Message -->
+    <Text fx:id="statusText" styleClass="status-text"/>
+
+</VBox> 

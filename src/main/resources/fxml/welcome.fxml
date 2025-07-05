@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.soilanalysis.controllers.WelcomeController"
+      styleClass="welcome-container" spacing="20">
+    
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <!-- Welcome Header -->
+    <VBox spacing="10">
+        <Text styleClass="welcome-header" text="Welcome to Soil Nutrient Analysis"/>
+        <Text styleClass="welcome-subheader" text="Your comprehensive soil management solution"/>
+    </VBox>
+
+    <!-- Quick Actions -->
+    <GridPane hgap="20" vgap="20" styleClass="quick-actions">
+        <columnConstraints>
+            <ColumnConstraints hgrow="ALWAYS" minWidth="250"/>
+            <ColumnConstraints hgrow="ALWAYS" minWidth="250"/>
+            <ColumnConstraints hgrow="ALWAYS" minWidth="250"/>
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints vgrow="ALWAYS" minHeight="200"/>
+        </rowConstraints>
+
+        <!-- New Analysis Card -->
+        <VBox styleClass="action-card" GridPane.columnIndex="0">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+            <ImageView fitHeight="60" fitWidth="60" preserveRatio="true">
+                <Image url="/images/new-analysis.png"/>
+            </ImageView>
+            <Text styleClass="card-title" text="New Analysis"/>
+            <Text styleClass="card-description" text="Start a new soil nutrient analysis"/>
+            <Region VBox.vgrow="ALWAYS"/>
+            <Button text="Start Analysis" styleClass="card-button" 
+                    onAction="#handleNewAnalysis" maxWidth="Infinity"/>
+        </VBox>
+
+        <!-- View History Card -->
+        <VBox styleClass="action-card" GridPane.columnIndex="1">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+            <ImageView fitHeight="60" fitWidth="60" preserveRatio="true">
+                <Image url="/images/history.png"/>
+            </ImageView>
+            <Text styleClass="card-title" text="View History"/>
+            <Text styleClass="card-description" text="Access your previous soil analyses"/>
+            <Region VBox.vgrow="ALWAYS"/>
+            <Button text="View History" styleClass="card-button" 
+                    onAction="#handleViewHistory" maxWidth="Infinity"/>
+        </VBox>
+
+        <!-- Quick Tips Card -->
+        <VBox styleClass="action-card" GridPane.columnIndex="2">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+            <ImageView fitHeight="60" fitWidth="60" preserveRatio="true">
+                <Image url="/images/tips.png"/>
+            </ImageView>
+            <Text styleClass="card-title" text="Quick Tips"/>
+            <Text styleClass="card-description" text="Get soil management recommendations"/>
+            <Region VBox.vgrow="ALWAYS"/>
+            <Button text="View Tips" styleClass="card-button" 
+                    onAction="#handleViewTips" maxWidth="Infinity"/>
+        </VBox>
+    </GridPane>
+
+    <!-- Recent Activity -->
+    <VBox spacing="10" styleClass="recent-activity">
+        <Text styleClass="section-title" text="Recent Activity"/>
+        <TableView fx:id="recentActivityTable" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="dateColumn" text="Date" prefWidth="150"/>
+                <TableColumn fx:id="typeColumn" text="Type" prefWidth="100"/>
+                <TableColumn fx:id="descriptionColumn" text="Description" prefWidth="300"/>
+                <TableColumn fx:id="statusColumn" text="Status" prefWidth="100"/>
+            </columns>
+        </TableView>
+    </VBox>
+
+    <!-- Weather and Alerts -->
+    <HBox spacing="20" styleClass="weather-alerts">
+        <!-- Weather Widget -->
+        <VBox styleClass="weather-widget" HBox.hgrow="ALWAYS">
+            <padding>
+                <Insets top="15" right="15" bottom="15" left="15"/>
+            </padding>
+            <Text styleClass="widget-title" text="Weather Forecast"/>
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <ImageView fitHeight="50" fitWidth="50" preserveRatio="true">
+                    <Image url="/images/weather.png"/>
+                </ImageView>
+                <VBox>
+                    <Text fx:id="temperatureText" styleClass="temperature-text" text="25°C"/>
+                    <Text fx:id="weatherDescription" styleClass="weather-description" text="Sunny"/>
+                </VBox>
+            </HBox>
+            <Text fx:id="weatherAdvice" styleClass="weather-advice" 
+                  text="Good conditions for soil sampling"/>
+        </VBox>
+
+        <!-- Alerts Widget -->
+        <VBox styleClass="alerts-widget" HBox.hgrow="ALWAYS">
+            <padding>
+                <Insets top="15" right="15" bottom="15" left="15"/>
+            </padding>
+            <Text styleClass="widget-title" text="Important Alerts"/>
+            <ListView fx:id="alertsList" VBox.vgrow="ALWAYS" styleClass="alerts-list">
+                <!-- Alerts will be populated dynamically -->
+            </ListView>
+        </VBox>
+    </HBox>
+</VBox> 

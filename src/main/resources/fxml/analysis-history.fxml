@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.soilanalysis.controllers.AnalysisHistoryController"
+      spacing="20" styleClass="history-container">
+    
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <!-- Header -->
+    <VBox spacing="10">
+        <Text styleClass="section-title" text="Analysis History"/>
+        <Text styleClass="section-subtitle" text="View and manage your soil analysis records"/>
+    </VBox>
+
+    <!-- Filters Section -->
+    <GridPane hgap="10" vgap="10" styleClass="filters-container">
+        <columnConstraints>
+            <ColumnConstraints hgrow="ALWAYS" minWidth="200"/>
+            <ColumnConstraints hgrow="ALWAYS" minWidth="200"/>
+            <ColumnConstraints hgrow="ALWAYS" minWidth="200"/>
+        </columnConstraints>
+
+        <!-- Search and Soil Type -->
+        <Label text="Search:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <TextField fx:id="searchField" GridPane.columnIndex="0" GridPane.rowIndex="1"
+                  promptText="Search by region..."/>
+
+        <Label text="Soil Type:" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+        <ComboBox fx:id="filterSoilType" GridPane.columnIndex="1" GridPane.rowIndex="1"
+                  prefWidth="Infinity"/>
+
+        <!-- Date Range -->
+        <Label text="Date Range:" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+        <HBox spacing="10" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <DatePicker fx:id="startDate" prefWidth="Infinity"/>
+            <DatePicker fx:id="endDate" prefWidth="Infinity"/>
+        </HBox>
+
+        <!-- Filter Buttons -->
+        <HBox spacing="10" alignment="CENTER_RIGHT" 
+              GridPane.columnIndex="2" GridPane.rowIndex="2">
+            <Button fx:id="filterButton" text="Apply Filters" styleClass="primary-button"/>
+            <Button fx:id="clearFilterButton" text="Clear" styleClass="tertiary-button"/>
+        </HBox>
+    </GridPane>
+
+    <!-- Main Content -->
+    <HBox spacing="20" VBox.vgrow="ALWAYS">
+        <!-- History Table -->
+        <VBox HBox.hgrow="ALWAYS" spacing="10">
+            <TableView fx:id="historyTable" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="dateColumn" text="Date" prefWidth="150"/>
+                    <TableColumn fx:id="regionColumn" text="Region" prefWidth="150"/>
+                    <TableColumn fx:id="soilTypeColumn" text="Soil Type" prefWidth="100"/>
+                    <TableColumn fx:id="nitrogenColumn" text="N (mg/kg)" prefWidth="100"/>
+                    <TableColumn fx:id="phosphorusColumn" text="P (mg/kg)" prefWidth="100"/>
+                    <TableColumn fx:id="potassiumColumn" text="K (mg/kg)" prefWidth="100"/>
+                    <TableColumn fx:id="phColumn" text="pH" prefWidth="80"/>
+                </columns>
+            </TableView>
+
+            <!-- Action Buttons -->
+            <HBox spacing="10" alignment="CENTER_RIGHT">
+                <Button fx:id="exportButton" text="Export Selected" styleClass="secondary-button"/>
+                <Button fx:id="deleteButton" text="Delete Selected" styleClass="tertiary-button"/>
+            </HBox>
+        </VBox>
+
+        <!-- Details Panel -->
+        <VBox fx:id="detailsContainer" spacing="10" styleClass="details-container"
+              prefWidth="300" HBox.hgrow="NEVER">
+            <!-- Details will be populated dynamically -->
+        </VBox>
+    </HBox>
+
+    <!-- Status Message -->
+    <Text fx:id="statusText" styleClass="status-text"/>
+
+</VBox> 
